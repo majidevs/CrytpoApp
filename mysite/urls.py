@@ -22,4 +22,4 @@ urlpatterns = [
     path('', include('crypto.urls')),
 ]
 
-urlpatterns += staticfiles_urlpatterns
+urlpatterns += staticfiles_urlpatterns()
