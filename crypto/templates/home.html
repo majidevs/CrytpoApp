@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="jumbotron">
+    <h1 class="display-4">Welcome to Crypto News Network</h1>
+    <p class="lead">Real-time cryptocurrency market news, Bitcoin and Altcoins, and the latest trading updates. </p>
+    
+</div>
+
+<h1 style="font-size:30px;">Crypto Live </h1>
+<br/>
+<table class="table table-striped table-dark table-bordered table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Coin</th>
+        <th scope="col">Price</th>
+        <th scope="col">24h High</th>
+        <th scope="col">24h Low</th>
+        <th scope="col">Change Last 24h</th>
+        <th scope="col">Market Cap</th>
+      </tr>
+    </thead>
+
+{% for key,value in price.DISPLAY.items %}
+  
+
+    <tbody>
+      <tr>
+       
+        <td>{{key}}</td>
+        <td>{{value.USD.PRICE}}</td>
+        <td>{{value.USD.HIGHDAY}}</td>
+        <td>{{value.USD.LOWDAY}}</td>
+        <td>{{value.USD.CHANGE24HOUR}}</td>
+        <td>{{value.USD.MKTCAP}}</td>
+      
+      </tr>
+{% endfor %}
+    </tbody>
+  </table>
+
+
+
+
+
+<h1 style="font-size:30px;">Live Crypto News</h1>
+<br/>
+
+<div class="container">
+    <div class = "row">
+        {% for x in api.Data %}
+            <div class="col-sm">
+                <div class="card" style="width: 18rem;">
+                    <img src="{{x.imageurl}}" class="card-img-top" alt="{{x.source}}" style="min-height: 262px; max-height: 262px">
+                    <div class="card-body">
+                    <h5 class="card-title">{{x.title}}</h5>
+                   
+                    <a href="{{x.url}}" class="btn btn-secondary">Read More</a>
+                    </div>
+                </div>
+                <br>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
